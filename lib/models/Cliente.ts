@@ -3,7 +3,7 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 /**
- * Schema de Mongoose de la entidad Usuario.
+ * Schema de Mongoose de la entidad cliente.
  */
 const ClienteSchemma = new Schema({
 	nombreCliente: { type: String, required: true },

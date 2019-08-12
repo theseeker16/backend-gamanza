@@ -28,7 +28,6 @@ class ClienteController {
             response: response
           });
       }
-
       return res.status(400).send({ message: "Data client not found and is required" });
     } catch (error) {
       return res.status(500).send({ message: error });
