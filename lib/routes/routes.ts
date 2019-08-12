@@ -2,6 +2,7 @@ import ClienteController from '../controllers/ClienteController';
 import CategoriaController from '../controllers/CategoriaController';
 import CuentaController from '../controllers/CuentaController';
 import ServicioController from '../controllers/ServicioController';
+import Token from '../middlewares/token';
 
 export class Routes {
   public routes(app):void {
@@ -11,19 +12,19 @@ export class Routes {
     });
 
     // Client routes
-    app.route('/createClient').post(ClienteController.createClient);
-    app.route('/editClient').put(ClienteController.editClient);
-    app.route('/deleteClient/:idClient').delete(ClienteController.deleteClient);
-    app.route('/getClient/:idClient').get(ClienteController.getClientByID);
-    app.route('/getClient').get(ClienteController.getAllClients);
+    app.route('/createClient').post(Token.isAuth,ClienteController.createClient);
+    app.route('/editClient').put(Token.isAuth,ClienteController.editClient);
+    app.route('/deleteClient/:idClient').delete(Token.isAuth,ClienteController.deleteClient);
+    app.route('/getClient/:idClient').get(Token.isAuth,ClienteController.getClientByID);
+    app.route('/getClient').get(Token.isAuth,ClienteController.getAllClients);
 
     // Categoria routes
-    app.route('/createCategoria').post(CategoriaController.createCategoria);
+    app.route('/createCategoria').post(Token.isAuth,CategoriaController.createCategoria);
 
     // Cuenta routes
-    app.route('/createCuenta').post(CuentaController.createCuenta);
+    app.route('/createCuenta').post(Token.isAuth,CuentaController.createCuenta);
 
     // Servicios routes
-    app.route('/createServicios').post(ServicioController.createServicio);
+    app.route('/createServicios').post(Token.isAuth,ServicioController.createServicio);
   }
 }
