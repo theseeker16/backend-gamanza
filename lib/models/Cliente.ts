@@ -7,17 +7,13 @@ const Schema = mongoose.Schema;
  */
 const ClienteSchemma = new Schema({
 	nombreCliente: { type: String, required: true },
-	segundoNombre: { type: String, required: false },
-	primerApellido: { type: String, required: true },
+	estadoCivil: { type: String, required: true },
+	direccion: { type: String, required: true },
 	segundoApellido: { type: String, required: true },
-	identificacion: { type: String, unique: true, required: true },
+	email: { type: String, unique: true, required: true },
 	telefono: { type: String, required: true },
-	nacimiento: { type: String, required: true },
-	correo: { type: String, unique: true, lowercase: true },
-	contrasena: { type: String, required: true },
-	fotoPerfilUrl: { type: String, required: false },
-	roles: {type: [String], required: true},
-	fechaCreacion: { type: String, default: moment().format('DD/MM/YYYY, h:mm:ss a') }
+  cuentaCliente: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Cuenta' }]
+
 });
 
 export default mongoose.model('clientes', ClienteSchemma);

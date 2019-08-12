@@ -28,9 +28,9 @@ class App {
     // Conectandose a la BD
     mongoose.connect(db.url, (err: any) => {
       if(err) {
-        return console.log(`Error al conectarse a la base de datos ${err}`);
+        return console.log(`Error in database connection ${err}`);
       }
-      console.log('Conexión a la base de datos establecida...');
+      console.log('Connection to the established database...');
     })
   }
 
