@@ -15,7 +15,7 @@ export class Routes {
     app.route('/createClient').post(Token.isAuth,ClienteController.createClient);
     app.route('/editClient').put(Token.isAuth,ClienteController.editClient);
     app.route('/deleteClient/:idClient').delete(Token.isAuth,ClienteController.deleteClient);
-    app.route('/getClient/:idClient').get(Token.isAuth,ClienteController.getClientByID);
+    app.route('/getClientByid/:idClient').get(Token.isAuth,ClienteController.getClientByID);
     app.route('/getClient').get(Token.isAuth,ClienteController.getAllClients);
 
     // Categoria routes

@@ -9,4 +9,4 @@ const CategoriaSchema = new Schema({
 	nombreCategoria: { type: String, required: true }
 });
 
-export default mongoose.model('categorias', CategoriaSchema);
+export default mongoose.model('Categoria', CategoriaSchema);

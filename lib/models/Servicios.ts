@@ -9,4 +9,4 @@ const ServicioSchema = new Schema({
   nombreServicios: { type: String, required: true },
 });
 
-export default mongoose.model('servicios', ServicioSchema);
+export default mongoose.model('Servicio', ServicioSchema);

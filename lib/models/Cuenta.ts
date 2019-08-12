@@ -9,4 +9,4 @@ const CuentaSchema = new Schema({
 	nombreCuenta: { type: String, required: true }
 });
 
-export default mongoose.model('cuentas', CuentaSchema);
+export default mongoose.model('Cuenta', CuentaSchema);

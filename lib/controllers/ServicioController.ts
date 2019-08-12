@@ -7,7 +7,7 @@ class ServicioController {
     try {
       if(Object.keys(req.body).length !== 0 ){
         let newServicio = new Servicio({
-          nombreServicio: req.body.nombre,
+          nombreServicios: req.body.nombre,
         })
 
         let response = await newServicio.save({});
