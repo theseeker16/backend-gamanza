@@ -28,7 +28,6 @@ class ClienteController {
             response: response
           });
       }
-      return res.status(400).send({ message: "Data client not found and is required" });
     } catch (error) {
       return res.status(500).send({ message: error });
     }
@@ -37,7 +36,7 @@ class ClienteController {
   public async deleteClient(req: Request, res: Response){
     console.log(req.params);
     try {
-      if(Object.keys(req.params).length !== 0 ){
+      if(req.params){
 
         let id = req.params.idClient;
 
@@ -46,7 +45,7 @@ class ClienteController {
           message: 'Client removed',
         });
       }
-      return res.status(400).send({ message: "Client ID not found is necessary to remove" });
+
     } catch (error) {
       return res.status(500).send({ message: error });
     }
@@ -64,7 +63,6 @@ class ClienteController {
           response: response
         });
       }
-      return res.status(404).send({ message: "Client ID not found is necessary to retrieve" });
     } catch (error) {
       return res.status(500).send({ message: error });
     }
@@ -104,12 +102,11 @@ class ClienteController {
           clients: listClients
         });
       }
-      return res.status(404).send({ message: "Client ID and dat not found is necessary to update" });
+      // return res.status(404).send({ message: "Client ID and dat not found is necessary to update" });
     } catch (error) {
       return res.status(500).send({ message: error });
     }
   }
-
 
 
   public async editClient(req: Request, res: Response) {
@@ -118,7 +115,7 @@ class ClienteController {
       if(Object.keys(req.params).length !== 0 && Object.keys(req.body).length !== 0){
 
         let filter = {_id: req.params.idClient};
-        let update = {cuentas: req.body.cuentas, categorias: req.body.categorias, servicios: req.body.servicios};
+        let update = req.body;
 
         let listClients = await Cliente.findOneAndUpdate(filter,update);
 
@@ -127,11 +124,12 @@ class ClienteController {
           clients: listClients
         });
       }
-      return res.status(404).send({ message: "Client ID and dat not found is necessary to update" });
+      // return res.status(404).send({ message: "Client ID and dat not found is necessary to update" });
     } catch (error) {
       return res.status(500).send({ message: error });
     }
   }
+
 }
 
 export default new ClienteController();
