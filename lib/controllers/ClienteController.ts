@@ -85,9 +85,36 @@ class ClienteController {
     }
   }
 
+  public async editClientPut(req: Request, res: Response) {
+    try {
+      // console.log(req);
+      if(Object.keys(req.params).length !== 0 && Object.keys(req.body).length !== 0){
+
+        let filter = {_id: req.params.idClient};
+
+        let client = new Cliente({
+          cuentas: req.body.cuentas,
+          categorias: req.body.categorias,
+          servicios: req.body.servicios});
+
+        let listClients = await Cliente.findOneAndUpdate(filter,client);
+
+        res.status(200).send({
+          message: 'Update client complete',
+          clients: listClients
+        });
+      }
+      return res.status(404).send({ message: "Client ID and dat not found is necessary to update" });
+    } catch (error) {
+      return res.status(500).send({ message: error });
+    }
+  }
+
+
+
   public async editClient(req: Request, res: Response) {
     try {
-      console.log(req);
+      // console.log(req);
       if(Object.keys(req.params).length !== 0 && Object.keys(req.body).length !== 0){
 
         let filter = {_id: req.params.idClient};
