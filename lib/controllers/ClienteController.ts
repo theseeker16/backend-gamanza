@@ -97,7 +97,7 @@ class ClienteController {
         let listClients = await Cliente.findOneAndUpdate(filter,update);
 
         res.status(200).send({
-          message: 'Retrieve all clients complete',
+          message: 'Update client complete',
           clients: listClients
         });
       }
