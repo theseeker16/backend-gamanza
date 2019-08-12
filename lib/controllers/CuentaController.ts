@@ -10,6 +10,10 @@ class CuentaController {
 
       let response = await newCuenta.save({});
 
+      res.status(200).send({
+        message: 'Creating new account',
+        response: response
+      });
     } catch (error) {
       return res.status(500).send({ message: error });
     }

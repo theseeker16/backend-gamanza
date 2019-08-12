@@ -10,7 +10,10 @@ class ServicioController {
       })
 
       let response = await newServicio.save({});
-
+      res.status(200).send({
+        message: 'Creating new service',
+        response: response
+      });
     } catch (error) {
       return res.status(500).send({ message: error });
     }

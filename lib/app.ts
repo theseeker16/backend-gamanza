@@ -8,12 +8,13 @@ import { Routes } from './routes/routes';
 
 class App {
   public app: express.Application = express();
-  public middConfig: Config = new Config();
-  public routes: Routes = new Routes();
+  private middConfig: Config = new Config();
+  private routes: Routes = new Routes();
 
   constructor(){
     this.configServidor();
     this.connectToMongo();
+    this.routes.routes(this.app);
   }
 
   private  configServidor():void {
